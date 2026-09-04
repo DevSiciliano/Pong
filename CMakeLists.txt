@@ -4,12 +4,8 @@ project(Pong LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# SFML 3.0 und seine Abhaengigkeiten nutzen teilweise cmake_minimum_required < 3.5,
-# was CMake 4.x nicht mehr akzeptiert.
 set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 
-# Audio zieht libogg/vorbis/FLAC nach; libogg laesst sich mit der MinGW-Toolchain
-# nicht konfigurieren ("No 16 bit type found"). Pong braucht weder Audio noch Netzwerk.
 set(SFML_BUILD_AUDIO OFF CACHE BOOL "" FORCE)
 set(SFML_BUILD_NETWORK OFF CACHE BOOL "" FORCE)
 
