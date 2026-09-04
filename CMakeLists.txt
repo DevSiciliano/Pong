@@ -18,5 +18,7 @@ FetchContent_Declare(SFML
         SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(Pong main.cpp)
+add_executable(Pong src/main.cpp
+        src/Ball.cpp
+        src/Ball.h)
 target_link_libraries(Pong PRIVATE SFML::Graphics SFML::Window SFML::System)
