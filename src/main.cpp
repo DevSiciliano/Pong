@@ -8,8 +8,10 @@ int main() {
     sf::VideoMode VM({1280u, 720u});
     sf::RenderWindow window(VM, "Pong Game");
     sf::Clock clock;
+
     Ball ball(1280/2, 0);
-    Paddle paddle(50, 50);
+    Paddle leftPaddle(50, 50);
+    Paddle rightPaddle(1280 - 50, 50);
 
     sf::Time dt;
 
@@ -50,9 +52,18 @@ int main() {
 
         window.clear(sf::Color::Black);
 
+        using Key = sf::Keyboard::Key;
+        sf::Keyboard::isKeyPressed(Key::W) ? leftPaddle.moveUp() : leftPaddle.stopUp();
+        sf::Keyboard::isKeyPressed(Key::S) ? leftPaddle.moveDown() : leftPaddle.stopDown();
+        sf::Keyboard::isKeyPressed(Key::Up) ? rightPaddle.moveUp() : rightPaddle.stopUp();
+        sf::Keyboard::isKeyPressed(Key::Down) ? rightPaddle.moveDown() : rightPaddle.stopDown();
+
         // Left paddle
-        paddle.update(dt);
-        window.draw(paddle.getShape());
+        leftPaddle.update(dt);
+        window.draw(leftPaddle.getShape());
+        // Right paddle
+        rightPaddle.update(dt);
+        window.draw(rightPaddle.getShape());
 
         ball.updateBall(dt);
         window.draw(ball.getBallShape());

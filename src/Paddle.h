@@ -9,8 +9,8 @@ private:
 
     float m_Speed = 1100.0f;
 
-    bool m_MovingLeft = false;
-    bool m_MovingRight = false;
+    bool m_MovingUp = false;
+    bool m_MovingDown = false;
 
 public:
     Paddle(float startX, float startY);
@@ -20,10 +20,10 @@ public:
 
     float getSpeed();
 
-    void moveLeft();
-    void moveRight();
-    void stopLeft();
-    void stopRight();
+    void moveUp();
+    void moveDown();
+    void stopUp();
+    void stopDown();
 
     void update(sf::Time dt);
 

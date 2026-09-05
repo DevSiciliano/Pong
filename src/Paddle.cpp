@@ -28,22 +28,39 @@ float Paddle::getSpeed()
     return m_Speed;
 }
 
-void Paddle::moveLeft()
+void Paddle::moveUp()
 {
+    m_MovingUp = true;
 }
 
-void Paddle::moveRight()
+void Paddle::moveDown()
 {
+    m_MovingDown = true;
 }
 
-void Paddle::stopLeft()
+void Paddle::stopUp()
 {
+    m_MovingUp = false;
 }
 
-void Paddle::stopRight()
+void Paddle::stopDown()
 {
+    m_MovingDown = false;
 }
 
 void Paddle::update(sf::Time dt)
 {
+    if (m_MovingUp)
+        m_Position.y -= m_Speed * dt.asSeconds();
+
+    if (m_MovingDown)
+        m_Position.y += m_Speed * dt.asSeconds();
+
+    const float height = m_Shape.getSize().y;
+    if (m_Position.y < 0.0f)
+        m_Position.y = 0.0f;
+    if (m_Position.y + height > 720.0f)
+        m_Position.y = 720.0f - height;
+
+    m_Shape.setPosition(m_Position);
 }
