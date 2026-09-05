@@ -26,18 +26,18 @@ float Ball::getXVelocity()
 
 void Ball::bounceSide()
 {
-    m_DirectionX = -m_DirectionX;
+    m_DirectionY = -m_DirectionY;
 }
 
 void Ball::bounceTop()
 {
-    m_DirectionY = -m_DirectionY;
+    m_DirectionX = -m_DirectionX;
 }
 
-void Ball::missBottom()
+void Ball::missSide()
 {
-    m_Position.x = 1280 / 2;
-    m_Position.y = 0;
+    m_Position.x = 0;
+    m_Position.y = 720 / 2;
 }
 
 void Ball::updateBall(sf::Time dt)

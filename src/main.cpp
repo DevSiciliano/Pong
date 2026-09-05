@@ -35,19 +35,19 @@ int main() {
         }
 
 
-        if (ball.getPosition().position.x < 0.f || ball.getPosition().position.x + ball.getPosition().size.x > 1280)
+        if (ball.getPosition().position.y < 0.f || ball.getPosition().position.y + ball.getPosition().size.y > 720)
         {
             ball.bounceSide();
         }
 
-        if (ball.getPosition().position.y < 0.f)
+        if (ball.getPosition().position.x < 0.f)
         {
             ball.bounceTop();
         }
 
-        if (ball.getPosition().position.y + ball.getPosition().size.y > 720)
+        if (ball.getPosition().position.x + ball.getPosition().size.x > 1280)
         {
-            ball.missBottom();
+            ball.missSide();
         }
 
         window.clear(sf::Color::Black);
