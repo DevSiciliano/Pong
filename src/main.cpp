@@ -2,11 +2,14 @@
 #include "Ball.h"
 #include <optional>
 
+#include "Paddle.h"
+
 int main() {
     sf::VideoMode VM({1280u, 720u});
     sf::RenderWindow window(VM, "Pong Game");
     sf::Clock clock;
     Ball ball(1280/2, 0);
+    Paddle paddle(50, 50);
 
     sf::Time dt;
 
@@ -15,6 +18,14 @@ int main() {
     while (window.isOpen())
     {
         dt = clock.restart();
+
+        while (const std::optional event = window.pollEvent())
+        {
+            if (event->is<sf::Event::Closed>())
+            {
+                window.close();
+            }
+        }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
         {
@@ -38,8 +49,14 @@ int main() {
         }
 
         window.clear(sf::Color::Black);
+
+        // Left paddle
+        paddle.update(dt);
+        window.draw(paddle.getShape());
+
         ball.updateBall(dt);
         window.draw(ball.getBallShape());
+
         window.display();
     }
 

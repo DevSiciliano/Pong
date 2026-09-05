@@ -20,5 +20,7 @@ FetchContent_MakeAvailable(SFML)
 
 add_executable(Pong src/main.cpp
         src/Ball.cpp
-        src/Ball.h)
+        src/Ball.h
+        src/Paddle.cpp
+        src/Paddle.h)
 target_link_libraries(Pong PRIVATE SFML::Graphics SFML::Window SFML::System)
